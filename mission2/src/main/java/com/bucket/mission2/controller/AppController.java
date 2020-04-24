@@ -1,7 +1,7 @@
-package com.bucket.mission2.Controller;
+package com.bucket.mission2.controller;
 
-import com.bucket.mission2.Model.AppModel;
-import com.bucket.mission2.Service.AppService;
+import com.bucket.mission2.model.AppModel;
+import com.bucket.mission2.service.AppService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,10 +26,22 @@ public class AppController {
         return cinemaService.getMovie(id);
     }
 
-    //GET movie by title
+    //GET movie by title using stream -> equals()
+//    @GetMapping("/movie/title/{title}")
+//    public AppModel getMovieByTitle(@PathVariable("title") String title) {
+//        return cinemaService.getMovieByTitle(title);
+//    }
+
+    //GET movie by title using stream -> contains()
     @GetMapping("/movie/title/{title}")
     public AppModel getMovieByTitle(@PathVariable("title") String title) {
-        return cinemaService.getMovieByTitle(title);
+        return cinemaService.getMovieByTitleUsingStream(title);
+    }
+
+    //GET movie by title using iterator
+    @GetMapping("/movie/title2/{title}")
+    public AppModel getMovieByTitle2(@PathVariable("title") String title) {
+        return cinemaService.getMovieByTitleUsingIterator(title, allMovie());
     }
 
     //POST method

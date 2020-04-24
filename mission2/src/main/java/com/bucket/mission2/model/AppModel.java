@@ -1,4 +1,4 @@
-package com.bucket.mission2.Model;
+package com.bucket.mission2.model;
 
 import lombok.*;
 

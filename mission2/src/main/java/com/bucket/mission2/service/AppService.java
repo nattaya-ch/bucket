@@ -1,11 +1,13 @@
-package com.bucket.mission2.Service;
+package com.bucket.mission2.service;
 
-import com.bucket.mission2.Model.AppModel;
+import com.bucket.mission2.model.AppModel;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 
@@ -26,8 +28,25 @@ public class AppService {
         return movieList.stream().filter(movie -> movie.getId().equals(id)).findFirst().get();
     }
 
-    public AppModel getMovieByTitle(String title) {
-        return movieList.stream().filter(movie -> movie.getTitle().equals(title)).findFirst().get();
+//    public AppModel getMovieByTitle(String title) {
+//        return movieList.stream().filter(movie -> movie.getTitle().equals(title)).findFirst().get();
+//    }
+
+    //New for finding movie by title by using stream
+    public AppModel getMovieByTitleUsingStream(String title) {
+        return movieList.stream().filter(movie -> movie.getTitle().contains(title)).findFirst().get();
+    }
+
+    //New for finding movie by title by using iterator
+    public AppModel getMovieByTitleUsingIterator(String title, List<AppModel> movies) {
+        Iterator<AppModel> iterator = movies.iterator();
+        while (iterator.hasNext()) {
+            AppModel movie = iterator.next();
+            if (movie.getTitle().equals(title)) {
+                return movie;
+            }
+        }
+        return null;
     }
 
     public void addMovie(AppModel cinemaModel) {
