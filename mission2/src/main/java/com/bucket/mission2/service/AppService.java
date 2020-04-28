@@ -28,26 +28,26 @@ public class AppService {
         return movieList.stream().filter(movie -> movie.getId().equals(id)).findFirst().get();
     }
 
-//    public AppModel getMovieByTitle(String title) {
-//        return movieList.stream().filter(movie -> movie.getTitle().equals(title)).findFirst().get();
+    public AppModel getMovieByTitle(String title) {
+        return movieList.stream().filter(movie -> movie.getTitle().equals(title)).findFirst().get();
+    }
+
+//    //New for finding movie by title by using stream
+//    public AppModel getMovieByTitleUsingStream(String title) {
+//        return movieList.stream().filter(movie -> movie.getTitle().contains(title)).findFirst().get();
 //    }
-
-    //New for finding movie by title by using stream
-    public AppModel getMovieByTitleUsingStream(String title) {
-        return movieList.stream().filter(movie -> movie.getTitle().contains(title)).findFirst().get();
-    }
-
-    //New for finding movie by title by using iterator
-    public AppModel getMovieByTitleUsingIterator(String title, List<AppModel> movies) {
-        Iterator<AppModel> iterator = movies.iterator();
-        while (iterator.hasNext()) {
-            AppModel movie = iterator.next();
-            if (movie.getTitle().equals(title)) {
-                return movie;
-            }
-        }
-        return null;
-    }
+//
+//    //New for finding movie by title by using iterator
+//    public AppModel getMovieByTitleUsingIterator(String title, List<AppModel> movies) {
+//        Iterator<AppModel> iterator = movies.iterator();
+//        while (iterator.hasNext()) {
+//            AppModel movie = iterator.next();
+//            if (movie.getTitle().equals(title)) {
+//                return movie;
+//            }
+//        }
+//        return null;
+//    }
 
     public void addMovie(AppModel cinemaModel) {
         movieList.add(cinemaModel);
